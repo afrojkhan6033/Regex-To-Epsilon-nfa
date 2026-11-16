@@ -4,7 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 
-const htmlPath = process.argv[2] || path.join(__dirname, 'thompson-construction-lab.html');
+const defaultHtml = fs.existsSync(path.join(__dirname, 'index.html'))
+  ? path.join(__dirname, 'index.html')
+  : path.join(__dirname, 'thompson-construction-lab.html');
+const htmlPath = process.argv[2] || defaultHtml;
 const html = fs.readFileSync(htmlPath, 'utf-8');
 let pass = 0, fail = 0;
 const failures = [];

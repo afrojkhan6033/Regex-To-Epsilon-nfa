@@ -2,7 +2,8 @@
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Launch%20App-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://afrojkhan6033.github.io/Regex_To_Epsilon-nfa/Regex_To_Epsilon-nfa.html)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-afrojkhan6033.github.io-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/)
+[![Hosted on GitHub Pages](https://img.shields.io/badge/Hosted%20With-GitHub%20Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)](https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/)
 [![Tests Passing](https://img.shields.io/badge/Tests-1535%20Passed-success?style=for-the-badge&logo=checkmarx&logoColor=white)](test.js)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20JS)-blue?style=for-the-badge&logo=javascript&logoColor=white)](engine.js)
 [![Theme: Dark & Light](https://img.shields.io/badge/Theme-Dark%20%26%20Light-blueviolet?style=for-the-badge&logo=affinitydesigner&logoColor=white)](#-features--specialities)
@@ -13,8 +14,8 @@
 </p>
 
 <p align="center">
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-features--specialities">Features</a> •
+  <a href="https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/"><strong>🌐 Launch Live Web App</strong></a> •
+  <a href="#-features--specialities">Key Features</a> •
   <a href="#-how-it-works">How It Works</a> •
   <a href="#-project-structure">Project Structure</a> •
   <a href="#-developer-guide">Developer Guide</a> •
@@ -25,19 +26,34 @@
 
 ---
 
+> ### 🌐 Live Deployment
+> **Try the full interactive simulator directly in your browser:**  
+> 👉 [**https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/**](https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/)  
+> *No installation, no build steps, and no setup required — deployed live via GitHub Pages.*
+
+---
+
 ## ⚡ Quick Start
 
-### 🌐 Option 1: Open in Browser (Zero Setup Required)
-Simply double-click or open **`Regex_To_Epsilon-nfa.html`** in any modern web browser:
-- No `npm install`, no build steps, and no local server required.
-- Fully functional offline out of the box.
+### 🌐 Option 1: Try It Online (Instant Access)
+Visit the live deployment at [**https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/**](https://afrojkhan6033.github.io/Regex-To-Epsilon-nfa/) and start building and simulating automata immediately.
 
-### 🧪 Option 2: Run Automated Unit Tests (Node.js)
+### 💻 Option 2: Run Locally (Offline Mode)
+Clone the repository and open `index.html` directly in your browser:
+```bash
+git clone https://github.com/afrojkhan6033/Regex_To_Epsilon-nfa.git
+cd Regex_To_Epsilon-nfa
+```
+- **Windows**: Double-click `index.html` or run `start index.html` in PowerShell.
+- **macOS**: Run `open index.html` in Terminal.
+- **Linux**: Run `xdg-open index.html`.
+
+### 🧪 Option 3: Run the Automated Unit Tests (Node.js)
 The core engine has zero external dependencies and runs with pure Node:
 ```bash
 node test.js
 ```
-> **Verified Result**: `1535 passed, 0 failed` (verifies syntax errors, Thompson invariants, state counts, and native RegExp parity).
+> **Verified Result**: `1535 passed, 0 failed` (verifies parser errors, Thompson invariants, state counts, and native RegExp parity).
 
 ---
 
@@ -88,7 +104,7 @@ Final SVG Diagram & Table ◄── ε-Closure Simulation ◄── Thompson Sta
 
 | File | Purpose |
 | :--- | :--- |
-| **`Regex_To_Epsilon-nfa.html`** | Standalone single-page web app with interactive SVG canvas, step player, string simulator, dark/light modes, and theory accordion. |
+| **`index.html`** | Standalone single-page web app and GitHub Pages root entry point (UI, SVG canvas, step player, string simulator, dark/light themes, and theory accordion). |
 | **`engine.js`** | Pure JavaScript computational core (Tokenizer, Validator, Shunting-Yard, Thompson construction, layout, ε-closure simulator, and transition table). Works in browser and Node.js. |
 | **`test.js`** | Comprehensive unit test suite with **1,535 assertions** (syntax errors, topological invariants, state count formulas, and fuzzing against native `RegExp`). |
 | **`qa.js`** | Headless browser QA test runner using JSDOM for automated validation of SVG elements and UI flows. |
@@ -104,7 +120,7 @@ Final SVG Diagram & Table ◄── ε-Closure Simulation ◄── Thompson Sta
 
 ### 🧪 Running the Tests
 ```bash
-# 1. Run engine unit tests (Zero dependencies)
+# 1. Run engine unit tests (Zero dependencies, pure Node)
 node test.js
 
 # 2. Run browser E2E QA tests (Requires jsdom)
@@ -120,13 +136,6 @@ The engine in [engine.js](file:///a:/Projects/regex_simulator/engine.js) is clea
 4. **Shunting-Yard (`toPostfix`)**: Define operator precedence in `PRECEDENCE` and mark as unary or binary.
 5. **Thompson Construction (`buildNFA`)**: Add a builder function specifying state coordinates, entry/exit IDs, and clearances.
 6. **Unit Tests (`test.js`)**: Add test assertions verifying Thompson invariants (out-degree $\le 2$, single start/final).
-
-### 🌐 Deploying to GitHub Pages (Live Demo in 30 Seconds)
-1. Push this repository to GitHub.
-2. In your repo, go to **Settings** $\to$ **Pages**.
-3. Under **Build and deployment** $\to$ **Branch**, choose `main` and `/ (root)`, then click **Save**.
-4. Your live app will be accessible at:
-   `https://<your-username>.github.io/Regex_To_Epsilon-nfa/Regex_To_Epsilon-nfa.html`
 
 ---
 
