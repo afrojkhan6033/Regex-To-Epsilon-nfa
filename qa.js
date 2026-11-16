@@ -16,11 +16,11 @@ function ok(cond, msg) { if (cond) pass++; else { fail++; failures.push(msg); } 
 async function withPage(run) {
   const dom = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'https://example.org/lab.html' });
   const { window } = dom;
-  window.matchMedia = window.matchMedia || (() => ({ matches: false, addEventListener() {}, removeEventListener() {} }));
-  window.scrollTo = () => {};
-  window.HTMLElement.prototype.scrollIntoView = window.HTMLElement.prototype.scrollIntoView || (() => {});
+  window.matchMedia = window.matchMedia || (() => ({ matches: false, addEventListener() { }, removeEventListener() { } }));
+  window.scrollTo = () => { };
+  window.HTMLElement.prototype.scrollIntoView = window.HTMLElement.prototype.scrollIntoView || (() => { });
   Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', { configurable: true, get() { return 900; } });
-  window.navigator.clipboard = { writeText: async () => {} };
+  window.navigator.clipboard = { writeText: async () => { } };
   const errors = [];
   window.addEventListener('error', e => errors.push(e.error || e.message));
   await new Promise(res => setTimeout(res, 60));
