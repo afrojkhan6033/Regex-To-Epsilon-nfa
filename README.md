@@ -1,4 +1,4 @@
-# 🚀 Regex_To_Epsilon-nfa
+# 🚀 Regex-To-Epsilon-nfa
 
 <div align="center">
 
@@ -41,8 +41,8 @@ Visit the live deployment at [**https://afrojkhan6033.github.io/Regex-To-Epsilon
 ### 💻 Option 2: Run Locally (Offline Mode)
 Clone the repository and open `index.html` directly in your browser:
 ```bash
-git clone https://github.com/afrojkhan6033/Regex_To_Epsilon-nfa.git
-cd Regex_To_Epsilon-nfa
+git clone https://github.com/afrojkhan6033/Regex-To-Epsilon-nfa.git
+cd Regex-To-Epsilon-nfa
 ```
 - **Windows**: Double-click `index.html` or run `start index.html` in PowerShell.
 - **macOS**: Run `open index.html` in Terminal.
@@ -146,7 +146,7 @@ The engine in [engine.js](file:///a:/Projects/regex_simulator/engine.js) is clea
 ### Built with care by **Afroj Khan**
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-afrojkhan6033-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/afrojkhan6033)
-[![Star this Repo](https://img.shields.io/badge/Star%20Repo-Regex_To_Epsilon--nfa-yellow?style=for-the-badge&logo=github)](https://github.com/afrojkhan6033/Regex_To_Epsilon-nfa)
+[![Star this Repo](https://img.shields.io/badge/Star%20Repo-Regex--To--Epsilon--nfa-yellow?style=for-the-badge&logo=github)](https://github.com/afrojkhan6033/Regex-To-Epsilon-nfa)
 
 <p align="center">
   Passionate about computer science education, automata theory, and building intuitive developer tools.
