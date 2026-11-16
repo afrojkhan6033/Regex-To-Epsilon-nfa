@@ -1,228 +1,223 @@
-# Thompson's Construction Lab — Regex to $\varepsilon$-NFA Visualizer & Simulator
+# ⚡ Thompson's Construction Lab — Regex to ε-NFA Interactive Simulator
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Tests: 1535 Passed](https://img.shields.io/badge/Tests-1535%20Passed-success.svg)](test.js)
-[![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20JS)-green.svg)](engine.js)
-[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Node.js-orange.svg)](#)
+<div align="center">
 
-An interactive, zero-build educational and computational laboratory that converts regular expressions into Non-deterministic Finite Automata with $\varepsilon$-transitions ($\varepsilon$-NFA) using **Thompson's Construction algorithm**.
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20Application-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://afrojkhan6033.github.io/Regex_To_Epsilon-nfa/Regex_To_Epsilon-nfa.html)
+[![Tests Passing](https://img.shields.io/badge/Tests-1535%20Passed-success?style=for-the-badge&logo=checkmarx&logoColor=white)](test.js)
+[![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Vanilla)-blue?style=for-the-badge&logo=javascript&logoColor=white)](engine.js)
+[![Dark & Light Themes](https://img.shields.io/badge/Theme-Night%20%26%20Light%20Modes-blueviolet?style=for-the-badge&logo=affinitydesigner&logoColor=white)](#-adaptive-night--dark-modes)
+[![License: MIT](https://img.shields.io/badge/License-MIT-amber?style=for-the-badge&logo=open-source-initiative&logoColor=white)](LICENSE)
 
-Featuring an interactive step-by-step visual stack machine, dynamic SVG layout engine, live string simulator with $\varepsilon$-closure path tracking, transition table generator ($\delta$), and export utilities (SVG, CSV, Markdown).
+<p align="center">
+  <strong>An interactive visualizer, compiler pipeline, and step-by-step stack machine transforming Regular Expressions into Non-deterministic Finite Automata with ε-transitions (ε-NFA).</strong>
+</p>
 
----
+<p align="center">
+  <a href="#-core-specialities">Key Highlights</a> •
+  <a href="#-adaptive-night--dark-modes">Dark & Light Themes</a> •
+  <a href="#-pipeline-architecture">Architecture</a> •
+  <a href="#-step-by-step-walkthrough">User Guide</a> •
+  <a href="#-developer-extension-guide">Developer Guide</a> •
+  <a href="#-creator--connect">Author</a>
+</p>
 
-## 📑 Table of Contents
-
-- [Key Features](#-key-features)
-- [How It Works](#-how-it-works)
-  - [1. Lexical Analysis & Validation](#1-lexical-analysis--validation)
-  - [2. Explicit Concatenation & Shunting-Yard](#2-explicit-concatenation--shunting-yard)
-  - [3. Thompson's Construction Algorithm](#3-thompsons-construction-algorithm)
-  - [4. Structural Invariants](#4-structural-invariants)
-  - [5. $\varepsilon$-Closure Simulation Engine](#5--closure-simulation-engine)
-- [Project Architecture](#-project-architecture)
-- [Quick Start](#-quick-start)
-  - [Browser (No Install Required)](#browser-no-install-required)
-  - [Automated Unit Tests (Node.js)](#automated-unit-tests-nodejs)
-  - [End-to-End Browser QA (JSDOM)](#end-to-end-browser-qa-jsdom)
-- [Interactive UI Guide](#-interactive-ui-guide)
-- [Export Capabilities](#-export-capabilities)
-- [Repository Setup & Push Guide](#-repository-setup--push-guide)
-- [License](#-license)
+</div>
 
 ---
 
-## ✨ Key Features
+## 🌟 Core Specialities
 
-- **Zero-Build & Self-Contained**: Runs out of the box in any modern browser without npm, webpack, or bundlers.
-- **Interactive Stack Machine Visualization**: Step forward, step backward, or auto-play through each postfix token evaluation with state-level fragment animations.
-- **Collision-Free Dynamic Layout Engine**: Computes exact Cartesian coordinates for states and bezier curves, guaranteeing clearance even for deeply nested star and union fragments.
-- **Interactive $\varepsilon$-Closure String Simulator**: Test test-strings character-by-character. Click any character or trace row to highlight active state subsets directly on the graph.
-- **Complete Transition Table ($\delta$)**: Generates an interactive state transition matrix across $\Sigma \cup \{\varepsilon\}$.
-- **One-Click Exports**:
-  - Export vector diagram as standalone `.svg`
-  - Export transition table as `.csv` or copy to clipboard
-  - Generate full technical analysis report as `.md`
-- **Responsive Dark & Light Modes**: Seamless switching between dark and light themes with system preference detection.
-- **Comprehensive Unit Testing**: Includes an automated suite of **1,535 assertions** verifying invariants, state count formulas, and native `RegExp` equivalence.
+What sets this project apart from typical regex tools:
+
+- 🚀 **Zero-Build, Pure Vanilla Engineering**: Runs entirely inside the browser with no build steps, bundlers, Babel, Webpack, or npm runtime dependencies. Just open the single HTML file and start exploring.
+- 🎬 **Animated Fragment Stack Machine**: Thompson's construction is visualized as a postfix stack machine. Watch sub-automata assemble into complex graphs step-by-step, complete with animated stack pills and applied rule formulas.
+- 📐 **Collision-Free Geometry Engine**: Custom mathematical layout algorithm calculates exact spine alignments and clearance offsets ($aboveSpine$, $belowSpine$), preventing curved skip and loop edges from ever intersecting states or nested fragments.
+- 🌓 **Adaptive Night / Dark & Light Modes**: Full dual-theme system styled with cohesive design tokens, auto-sensing OS preferences (`prefers-color-scheme`) and supporting instant manual toggling.
+- 🔍 **Live String Simulation & Graph Highlighting**: Tests inputs using the formal $\varepsilon$-closure extended transition function ($\hat{\delta}$). Clicking any character or trace row instantly spotlights the active state subset on the canvas.
+- 📊 **Complete State Transition Matrix ($\delta$)**: Dynamic transition table generated in real time across the alphabet $\Sigma \cup \{\varepsilon\}$, complete with start ($\to$) and accept ($*$) state markers.
+- 📦 **Multi-Format Export Hub**: Instant one-click exports for standalone scalable vector graphics (`.svg`), tabular spreadsheets (`.csv`), formatted Markdown technical reports (`.md`), or direct clipboard copy.
+- 🧪 **1,535 Automated Tests**: Exhaustive test suite verifying syntactic error boundaries, Thompson topological invariants, mathematical state bounds, and randomized fuzzing against JavaScript native `RegExp`.
 
 ---
 
-## 🧠 How It Works
+## 🌓 Adaptive Night & Dark Modes
 
-The engine executes a 5-stage compilation and execution pipeline:
+Designed with a high-contrast, eye-friendly aesthetic tailored for developers, researchers, and students working late hours:
 
+| Feature | ☀️ Light Mode | 🌙 Night / Dark Mode |
+| :--- | :--- | :--- |
+| **Canvas Background** | `#F4F6FB` (Crisp paper with subtle dot grid) | `#0A0F1C` (Deep space navy with glowing grid) |
+| **Surface Cards** | `#FFFFFF` with soft ambient drop shadows | `#121A2C` with high-contrast borders |
+| **Symbol Transitions** | Vibrant Teal (`#0F9B89`) | Neon Aqua (`#4FD7C4`) |
+| **ε-Transitions** | Amber Ochre (`#B5700A`) | Vivid Amber (`#F2A857`) |
+| **Active States** | Deep Forest Green (`#1E8E5A`) | Bright Emerald (`#6FCF97`) |
+| **Accept States** | Berry Crimson (`#C23768`) | Radiant Rose (`#F1729B`) |
+| **Auto-Detection** | Triggers automatically via system preference | Triggers automatically via system preference |
+| **Manual Override** | Instant toggle via top-right `◐` button | Instant toggle via top-right `◐` button |
+
+> [!TIP]
+> Theme settings persist seamlessly across re-renders, window resizes, and simulation runs without losing your zoom level or active state highlights.
+
+---
+
+## 🔬 Formal Theory & Rules Implemented
+
+Thompson's Construction builds an $\varepsilon$-NFA compositionally from regular expressions:
+
+```mermaid
+flowchart LR
+    A["Regex Infix (a|b)*abb"] --> B["Tokenize & Grammar Validation"]
+    B --> C["Explicit Concat Inserter (·)"]
+    C --> D["Shunting-Yard (Postfix / RPN)"]
+    D --> E["Thompson Stack Machine"]
+    E --> F["Layout & Collision-Free SVG"]
+    E --> G["Live ε-Closure Simulator"]
+    E --> H["Transition Table δ"]
 ```
-Regex Input  ──►  Tokenizer & Validator  ──►  Concat Inserter  ──►  Shunting-Yard (Postfix)
-                                                                            │
-Final Diagram & Table  ◄──  Simulation & Tests  ◄──  Thompson Stack Machine ◄┘
-```
 
-### 1. Lexical Analysis & Validation
-- Parses characters, digits, escape sequences (`\`), groups (`(`, `)`), and operators (`*`, `+`, `?`, `|`, `ε`).
-- A recursive-descent grammar validator catches unbalanced parentheses, misplaced operators, empty groups, and invalid characters before processing.
+### 1. Thompson Fragment Rules
 
-### 2. Explicit Concatenation & Shunting-Yard
-Standard regular expressions omit the concatenation operator ($ab \equiv a \cdot b$). The engine inserts an explicit internal concat token ($\cdot$) between adjacent atoms:
-```
-(a|b)*abb  ──►  (a|b)* · a · b · b  ──►  ab|*a·b·b·  (Postfix)
-```
-Dijkstra's **Shunting-Yard algorithm** transforms the infix expression into Reverse Polish Notation (RPN), logging a step-by-step trace of the operator stack and output queue.
+| Operation | Regex Syntax | Fragment Structure | New States | New Moves |
+| :--- | :---: | :--- | :---: | :---: |
+| **Base Symbol** | `a` | Two states connected by symbol $a$: $q_i \xrightarrow{a} q_j$ | $2$ | $1$ |
+| **Empty String** | `ε` | Two states connected by $\varepsilon$: $q_i \xrightarrow{\varepsilon} q_j$ | $2$ | $1$ |
+| **Concatenation** | `RS` | Exit of $R$ connects to Entry of $S$: $f_R \xrightarrow{\varepsilon} s_S$ | $0$ | $1$ |
+| **Union (Or)** | `R\|S` | New start splits to $R, S$; exits merge to new final | $2$ | $4$ |
+| **Kleene Star** | `R*` | New start/final pair with repeat and bypass edges | $2$ | $4$ |
+| **Plus (One+)** | `R+` | Like star, but without the zero-occurrence bypass | $2$ | $3$ |
+| **Optional** | `R?` | Like star, but without the repeat loop-back edge | $2$ | $3$ |
 
-### 3. Thompson's Construction Algorithm
-The postfix token stream is evaluated using a stack machine operating on NFA fragments. Every fragment maintains an invariant spine ($y_{\text{entry}} = y_{\text{exit}}$):
+### 2. Theoretical Invariants Guaranteed
 
-| Operator / Rule | Description | States Added | Transitions Added |
-| :--- | :--- | :---: | :--- |
-| **Symbol $a$** | Creates 2 states linked by $a$ | $2$ | $q_i \xrightarrow{a} q_j$ |
-| **Epsilon $\varepsilon$** | Creates 2 states linked by $\varepsilon$ | $2$ | $q_i \xrightarrow{\varepsilon} q_j$ |
-| **Concatenation $R \cdot S$** | Connects exit of $R$ to entry of $S$ via $\varepsilon$ | $0$ | $f_R \xrightarrow{\varepsilon} s_S$ |
-| **Union $R \mid S$** | New start branches to $R$ and $S$; both join to new accept | $2$ | $s \xrightarrow{\varepsilon} s_R,\; s \xrightarrow{\varepsilon} s_S,\; f_R \xrightarrow{\varepsilon} f,\; f_S \xrightarrow{\varepsilon} f$ |
-| **Kleene Star $R^*$** | Zero or more repetitions | $2$ | $s \xrightarrow{\varepsilon} s_R,\; s \xrightarrow{\varepsilon} f,\; f_R \xrightarrow{\varepsilon} s_R,\; f_R \xrightarrow{\varepsilon} f$ |
-| **Positive Closure $R^+$** | One or more repetitions ($R \cdot R^*$) | $2$ | $s \xrightarrow{\varepsilon} s_R,\; f_R \xrightarrow{\varepsilon} s_R,\; f_R \xrightarrow{\varepsilon} f$ |
-| **Optional $R?$** | Zero or one occurrence ($R \mid \varepsilon$) | $2$ | $s \xrightarrow{\varepsilon} s_R,\; s \xrightarrow{\varepsilon} f,\; f_R \xrightarrow{\varepsilon} f$ |
-
-### 4. Structural Invariants
-Every constructed NFA strictly satisfies Thompson's canonical properties:
-1. **Single Start & Single Accept**: Exactly one initial state ($q_{\text{start}}$) and one final state ($q_{\text{accept}}$).
-2. **Boundary Restrictions**: No incoming transitions to $q_{\text{start}}$; no outgoing transitions from $q_{\text{accept}}$.
-3. **Bounded Out-Degree**: Maximum out-degree of any state is $\le 2$.
-4. **Exact State Formula**:
+1. **Exact State Formula**:
    $$|Q| = 2 \times \Big(N_{\text{symbols}} + N_{\text{unions}} + N_{\text{stars}} + N_{\text{pluses}} + N_{\text{optionals}}\Big)$$
-
-### 5. $\varepsilon$-Closure Simulation Engine
-Strings are evaluated using the extended transition function $\hat{\delta}$:
-$$\varepsilon\text{-closure}(S) = S \cup \left\{ q' \mid \exists q \in \varepsilon\text{-closure}(S) \text{ such that } q \xrightarrow{\varepsilon} q' \right\}$$
-$$\text{move}(S, a) = \{ q' \mid \exists q \in S \text{ such that } q \xrightarrow{a} q' \}$$
-
-At each character, the active state set updates as:
-$$S_{i+1} = \varepsilon\text{-closure}\big(\text{move}(S_i, c_{i+1})\big)$$
-A string is accepted if and only if all input symbols are consumed and:
-$$S_{|w|} \cap F \neq \emptyset$$
+2. **Single Entry / Single Exit**: Exactly one start state ($q_{\text{start}}$) and one accept state ($q_{\text{accept}}$).
+3. **No Outer Leakage**: $q_{\text{start}}$ has in-degree $0$; $q_{\text{accept}}$ has out-degree $0$.
+4. **Bounded Out-Degree**: Every state has an out-degree of at most $2$.
 
 ---
 
-## 📁 Project Architecture
+## 🕹️ Interactive UI & Step-by-Step Walkthrough
+
+1. **Input & Preset Keypad**:
+   - Type any regular expression or click quick-load examples: `(a|b)*abb`, `a(b|c)*d`, `0(0|1)*1`, `ab?c+`, `(a|ε)b*`, `(ab)+|c`.
+   - On-screen touch/click keycaps (`|`, `*`, `+`, `?`, `(`, `)`, `ε`, `clear`).
+2. **Postfix Pipeline Matrix**:
+   - Inspect Dijkstra's Shunting-Yard algorithm output token by token with live operator stack snapshots.
+3. **Stepping Controls**:
+   - `⏮ First`: Reset to initial token
+   - `◀ Prev`: Step one fragment backward
+   - `▶ Play / Pause`: Auto-play the assembly animation with smooth transitions
+   - `▶ Next`: Advance one fragment forward
+   - `⏭ Last`: Jump to the completed automaton
+4. **Pan & Zoom Canvas Viewport**:
+   - Zoom in (`+`), zoom out (`−`), or fit to frame (`⤢`) with drag-to-pan navigation.
+5. **Interactive String Simulator**:
+   - Enter test strings (e.g. `abb`) and click **Run**.
+   - Inspect step-by-step $\varepsilon$-closures.
+   - Click any character in the visual string track to spotlight that exact active state set on the canvas diagram above!
+
+---
+
+## 📁 Repository Structure
 
 ```
 Regex_To_Epsilon-nfa/
-├── Regex_To_Epsilon-nfa.html        # Complete, self-contained single-page web app
-├── engine.js                        # Pure JS logic (Tokenizer, Validator, Thompson, Sim, Table)
-├── test.js                          # Node.js automated test suite (1,535 assertions)
-├── qa.js                            # Browser E2E validation test runner using JSDOM
-└── README.md                        # Documentation
+├── Regex_To_Epsilon-nfa.html   # Standalone web app (UI, styles, SVG canvas, dark/light themes)
+├── engine.js                   # Pure JavaScript core (Tokenizer, Parser, Thompson, Sim, Tables)
+├── test.js                     # 1,535 automated unit tests (Invariants, sizes, RegExp fuzzing)
+├── qa.js                       # Headless DOM test runner using JSDOM
+├── .gitignore                  # Git exclusions for dependencies and system cache
+└── README.md                   # Project documentation
 ```
-
-- **`Regex_To_Epsilon-nfa.html`**: Zero-dependency UI featuring SVG rendering, interactive pan-zoom controls, playback runner, and theme toggling.
-- **`engine.js`**: Environment-agnostic module that works seamlessly in Node.js (`module.exports`) and browser global scopes (`window.ENGINE`).
-- **`test.js`**: Rigorous unit tests checking parser errors, graph invariants, state bounds, and randomized equivalence fuzzing against JavaScript native `RegExp`.
-- **`qa.js`**: Headless browser QA validating DOM integrity, layout math, SVG path validity, simulation interactivity, and theme switching.
 
 ---
 
-## 🚀 Quick Start
+## 🛠️ Developer Extension Guide
 
-### Browser (No Install Required)
-Simply open `Regex_To_Epsilon-nfa.html` in your web browser:
-- **Windows**: Double-click the file or run `start Regex_To_Epsilon-nfa.html` in PowerShell.
-- **macOS**: Run `open Regex_To_Epsilon-nfa.html` in Terminal.
-- **Linux**: Run `xdg-open Regex_To_Epsilon-nfa.html`.
+> [!NOTE]
+> This section is specifically curated for developers looking to customize, extend, or contribute to this project.
 
-*(Optional)* Serve locally using Python or Node:
+### 1. Running Tests Locally
+
+The core test suite runs under vanilla Node.js without installing any external packages:
+
 ```bash
-# Python 3
-python -m http.server 8080
-
-# Or Node (npx)
-npx serve .
-```
-
-### Automated Unit Tests (Node.js)
-The core engine has zero external dependencies and runs under standard Node.js (v16+):
-```bash
+# Run 1,535 pure unit assertions (instant execution)
 node test.js
 ```
-Expected output:
-```text
-1535 passed, 0 failed
-```
 
-### End-to-End Browser QA (JSDOM)
-To run the automated browser-level tests in a virtual DOM environment:
+To run end-to-end browser QA tests in a headless virtual DOM:
+
 ```bash
+# Install jsdom (one-time setup for QA)
 npm install jsdom
+
+# Run browser simulation tests
 node qa.js
 ```
 
----
+### 2. How to Add New Regex Operators
 
-## 🖥️ Interactive UI Guide
+The engine in [engine.js](file:///a:/Projects/regex_simulator/engine.js) is cleanly decoupled into 6 distinct phases:
 
-1. **Regex Input & Presets**:
-   - Type custom expressions or click built-in presets: `(a|b)*abb`, `a(b|c)*d`, `0(0|1)*1`, `ab?c+`, `(a|ε)b*`, `(ab)+|c`.
-   - Use operator keycaps (`|`, `*`, `+`, `?`, `(`, `)`, `ε`) for quick insertion.
-2. **Postfix Evaluation Trace**:
-   - Review how Shunting-Yard handles operator precedence and explicit concatenation insertion.
-3. **Step-by-Step Construction Player**:
-   - Step through the assembly of individual NFA fragments using `⏮ First`, `◀ Prev`, `▶ Play/Pause`, `▶ Next`, `⏭ Last`.
-   - Observe live explanations of Thompson's rule applied at each token.
-4. **Final NFA Canvas**:
-   - Explore the fully assembled automaton with custom pan and zoom controls (`+`, `−`, `⤢ Fit`).
-   - Distinguish transitions with color-coded paths (input symbols vs. $\varepsilon$-moves).
-5. **Interactive String Tester**:
-   - Input strings (e.g. `abb`) to inspect step-by-step state sets.
-   - Click on any token in the string track to spotlight active states on the canvas.
+1. **Tokenizer (`tokenize`)**:
+   - Add new token types (e.g. character classes `[a-z]`, wildcards `.`, or count ranges `{n,m}`) to the character scanner.
+2. **Validator (`validate`)**:
+   - Extend the recursive-descent grammar rules (`parseAtom`, `parseRepeat`, `parseConcat`, `parseUnion`).
+3. **Implicit Concat Inserter (`insertConcat`)**:
+   - Define whether the new operator can start an atom (`startsAtom`) or end an atom (`endsAtom`).
+4. **Shunting-Yard (`toPostfix`)**:
+   - Assign appropriate precedence in `PRECEDENCE` and register in `UNARY` or `BINARY` sets.
+5. **Thompson Construction (`buildNFA`)**:
+   - Implement your layout constructor (`buildYourOperator(A, B)`) returning:
+     ```javascript
+     {
+       stateIds: [...],
+       edges: [...],
+       entryId: s,
+       exitId: f,
+       extraTop: ...,
+       extraBottom: ...
+     }
+     ```
+6. **Simulator & Invariant Tests**:
+   - Add verification cases in `test.js` to ensure max out-degree $\le 2$ and exact state count guarantees.
 
----
+### 3. Deploying to GitHub Pages (Live in 30 Seconds)
 
-## 💾 Export Capabilities
+To host your own live web demo directly on GitHub:
 
-From the Final NFA section, you can export and share your automata:
-- **`⭳ Download diagram (.svg)`**: Clean, scalable vector graphic suitable for papers, slides, and documentation.
-- **`⭳ Transition table (.csv)`**: Tabular state transition matrix ready for spreadsheet analysis or external parsers.
-- **`⭳ Full construction report (.md)`**: Markdown report containing regex metadata, state counts, transition counts, postfix trace, and transition table.
-- **`⧉ Copy table`**: Formatted transition matrix copied directly to your clipboard.
-
----
-
-## 📤 Repository Setup & Push Guide
-
-To upload this project to your GitHub repository ([`https://github.com/afrojkhan6033/Regex_To_Epsilon-nfa`](https://github.com/afrojkhan6033/Regex_To_Epsilon-nfa)):
-
-```bash
-# 1. Initialize git in your project directory
-git init
-
-# 2. Stage all project files
-git add .
-
-# 3. Create initial commit
-git commit -m "feat: initial commit for Thompson's Construction Lab"
-
-# 4. Set main branch
-git branch -M main
-
-# 5. Link to your remote GitHub repository
-git remote add origin https://github.com/afrojkhan6033/Regex_To_Epsilon-nfa.git
-
-# 6. Push to GitHub
-git push -u origin main
-```
-
-*(If your remote repository already contains an initial commit or README, run `git pull origin main --rebase` before pushing).*
+1. Push your repository to GitHub.
+2. Go to your repository **Settings** $\to$ **Pages**.
+3. Under **Branch**, select `main` and root `/` folder, then click **Save**.
+4. Access your live app at:
+   `https://<your-username>.github.io/Regex_To_Epsilon-nfa/Regex_To_Epsilon-nfa.html`
 
 ---
 
-## 👨‍💻 Author & Connect
+## 👨‍💻 Creator & Connect
 
-Crafted with care by **Afroj Khan** ([@afrojkhan6033](https://github.com/afrojkhan6033)).
+<div align="center">
 
-- 🌐 **GitHub Profile**: [github.com/afrojkhan6033](https://github.com/afrojkhan6033)
-- 🚀 **Projects**: Explore more interactive computer science labs, compiler tools, and open-source visualizers.
-- ⭐ **Support**: If you find this project helpful for your learning, coursework, or teaching, please consider giving it a **Star** and following on GitHub!
+### Built with care by **Afroj Khan**
+
+[![GitHub Profile](https://img.shields.io/badge/GitHub-afrojkhan6033-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/afrojkhan6033)
+[![Follow on GitHub](https://img.shields.io/badge/Follow-afrojkhan6033-blue?style=for-the-badge&logo=github)](https://github.com/afrojkhan6033)
+
+<p align="center">
+  Passionate about computer science education, compiler construction, and building intuitive developer tools.
+</p>
+
+<p align="center">
+  ⭐ <strong>If you found this project helpful or educational, please consider giving it a Star!</strong> ⭐<br>
+  Follow on GitHub for upcoming interactive simulators, algorithms visualizers, and open-source releases.
+</p>
+
+</div>
 
 ---
 
-## 📜 License
+## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) — feel free to use, modify, and distribute for educational, academic, or personal projects.
+This repository is licensed under the [MIT License](LICENSE) — free for educational, academic, and open-source use.
